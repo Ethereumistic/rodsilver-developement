@@ -1,12 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, LogoImage,  Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import {  Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 import { cn } from "@/utils/cn";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";
 import { FlipWordsNav } from "./FlipWordsNav";
-// import { FloatingNavDemo } from "./FloatingNavDemo";
-import { Pacifico } from "next/font/google";
 
 
 import {
@@ -16,12 +14,6 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 
-const pacifico = Pacifico({
-  subsets: ['latin', 'cyrillic'],
-  weight: '400',
-  variable: '--font-pacifico',
-  display: 'swap',
-})
 
 export function NavbarDemo({ className }: { className?: string }) {
 
@@ -82,9 +74,7 @@ function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div>
-      {/* <div className="sm:hidden">
-      <FloatingNavDemo />
-      </div> */}
+
     <div
       className={cn("fixed top-10  inset-x-0  w-full px-4 md:px-0 md:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] sm:block hidden mx-auto z-50  ", className)}
     >
@@ -264,7 +254,6 @@ function Navbar({ className }: { className?: string }) {
         </div>
         <Link href="/contact"
               className="">
-        {/* <HoverBorderGradientDemo /> */}
         </Link>
         <ThemeSwitch />
 
