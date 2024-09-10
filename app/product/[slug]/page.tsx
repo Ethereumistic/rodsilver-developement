@@ -11,7 +11,6 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const product: ProductType = await getProduct(params.slug)
-  const products: ProductType[] = await getProducts()
 
   return <ProductDetails product={product} />
 }
