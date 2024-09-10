@@ -5,7 +5,7 @@ import { ProductType } from '@/types/product'
 
 async function getData() {
   const query = '*[_type == "product"]'
-  const products: ProductType[] = await client.fetch(query)
+  const products: ProductType[] = await client.fetch(query, {}, { next: { revalidate: 60 } })
 
   return { products }
 }
@@ -19,13 +19,11 @@ export default async function Home() {
         <div>
           {products?.map((product: ProductType) => <Product key={product._id} product={product} />)}
         </div>
-
-        <h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
-        <h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
-        <h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
-        <h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
-        <h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
-
+<h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
+<h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
+<h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
+<h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
+<h1 className="text-4xl font-pacifico mb-32">Hello World</h1>
       </main>
     </div>
   );
