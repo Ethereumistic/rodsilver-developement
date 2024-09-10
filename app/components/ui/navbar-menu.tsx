@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
-import {
-  motion,
-} from "framer-motion";import Link from "next/link";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
 
 const transition = {
@@ -25,13 +24,11 @@ export const MenuItem = ({
   item: string;
   children?: React.ReactNode;
 }) => {
-
-
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer hover:opacity-[0.9] text-white"
       >
         {item}
       </motion.p>
@@ -45,13 +42,10 @@ export const MenuItem = ({
             <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
               <motion.div
                 transition={transition}
-                layoutId="active" // layoutId ensures smooth animation
-                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+                layoutId="active"
+                className="bg-white/[0.5] dark:bg-black/[0.5] backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
               >
-                <motion.div
-                  layout // layout ensures smooth animation
-                  className="w-max h-full p-4"
-                >
+                <motion.div layout className="w-max h-full p-4">
                   {children}
                 </motion.div>
               </motion.div>
@@ -62,6 +56,7 @@ export const MenuItem = ({
     </div>
   );
 };
+
 
 export const LogoImage = ({
   title,
@@ -103,18 +98,13 @@ export const Menu = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="boder border-transparent 
-      dark:bg-gray-800/50 dark:border-white/[0.2] bg-slate-200/50 rounded-full">
     <nav
-      onMouseLeave={() => setActive(null)} // resets the state
-      className="relative h-[90px] rounded-full 
-      shadow-input flex justify-center  space-x-16 px-8 py-6 "
+      onMouseLeave={() => setActive(null)}
+      className="relative h-16 rounded-bl-full rounded-br-full text-2xl shadow-input flex items-center justify-between px-8 py-2
+                 border bg-gray-800/50 border-white/[0.2]"
     >
-
-
       {children}
     </nav>
-    </div>
   );
 };
 
