@@ -3,8 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
 
-const Product = ({ product: { image, name, slug, price  } }: { product: { image: any, name: string, slug: any, price: number } }) => {
-  return (
+interface ProductType {
+    image: { asset: { _ref: string } }[];
+    name: string;
+    slug: { current: string };
+    price: number;
+  }
+
+  const Product = ({ product: { image, name, slug, price } }: { product: ProductType }) => {
+    return (
     <div>
       <Link href={`/product/${slug.current}`}>
         <div className="product-card">
