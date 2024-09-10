@@ -6,8 +6,8 @@ import { urlFor } from '@/sanity/lib/client'
 import { ProductType } from '@/types/product'
 import { IconMinus, IconPlus, IconStarFilled, IconStar } from '@tabler/icons-react'
 
-const ProductDetails = ({ product, products }: { product: ProductType, products: ProductType[] }) => {
-  const [index, setIndex] = useState(0);
+const ProductDetails = ({ product }: { product: ProductType }) => {
+    const [index, setIndex] = useState(0);
 
   return (
     <div>
