@@ -45,22 +45,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-    lang="en"
-    suppressHydrationWarning
-    className={cx(geistSans.variable, geistMono.variable, pacifico.variable, paci.variable)}
-  > 
-
-      <Providers>
+      lang="en"
+      suppressHydrationWarning
+      className={cx(geistSans.variable, geistMono.variable, pacifico.variable, paci.variable)}
+    > 
+      <body className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${paci.variable} antialiased`}>
+        <Providers>
           <div className="font-pacifico">
             <NavbarDemo />
           </div>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${paci.variable}  antialiased`}
-      >
-        {children}
+          <main>
+            {children}
+          </main>
+        </Providers>
       </body>
-      </Providers>
-
     </html>
   );
 }

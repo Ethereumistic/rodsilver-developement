@@ -8,22 +8,25 @@ interface ProductType {
     name: string;
     slug: { current: string };
     price: number;
+    details: string;
   }
 
-  const Product = ({ product: { image, name, slug, price } }: { product: ProductType }) => {
+  const Product = ({ product: { image, name, slug, price, details } }: { product: ProductType }) => {
     return (
     <div>
       <Link href={`/product/${slug.current}`}>
-        <div className="product-card">
+        <div className="cursor-pointer transition duration-300 ease-in-out 
+        transform hover:scale-105 border border-gray-200 rounded-xl p-4">
           <Image 
             alt={name}
             src={urlFor(image && image[0]).url()}
             width={250}
             height={250}
-            className="product-image"
+            className="rounded-xl"
           />
-          <p className="product-name">{name}</p>
-          <p className="product-price">${price}</p>
+          <p className="font-geist-sans text-xl">{name}</p>
+          <p className="font-geist-sans text-2xl mt-1">${price}</p>
+          <p className="font-geist-sans text-2xl mt-1">{details}</p>
         </div>
       </Link>
     </div>

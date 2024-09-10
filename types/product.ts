@@ -4,4 +4,5 @@ export interface ProductType {
     name: string;
     slug: { current: string };
     price: number;
+    details: string;
   }
