@@ -5,6 +5,7 @@ import { cn } from "@/utils/cn";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";
 import { FlipWordsNav } from "./FlipWordsNav";
+import { usePathname } from 'next/navigation';
 
 
 import {
@@ -16,6 +17,8 @@ import {
 
 
 export function NavbarDemo({ className }: { className?: string }) {
+
+  const pathname = usePathname();
 
   const { scrollYProgress } = useScroll();
 
@@ -37,6 +40,9 @@ export function NavbarDemo({ className }: { className?: string }) {
       }
     }
   });
+
+  if (pathname.startsWith('/studio')) return null;
+
 
   return (
     <div className="relative w-full flex items-center justify-center ">
@@ -140,106 +146,52 @@ function Navbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Услуги">
         <div className="flex justify-center items-center my-4"><FlipWordsNav /></div>
 
-          <div className=" text-sm grid grid-cols-4 gap-10 p-4 ">
+          <div className=" text-sm grid grid-cols-3 gap-10 p-4 ">
             <ProductItem
-              title="Хлебарки"
+              title="Обеци"
               href="/pests/cockroach"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/cockroach.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/cockroach.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/obeci.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/obeci.png"
               description="Сбогом на мръсните хлебарки, които разпространяват болести!"
             />
             <ProductItem
-              title="Гризачи"
+              title="Пръстени"
               href="/pests/rat"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/rat.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/rat.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/prusten.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/prusten.png"
               description="Чао на досадните гризачи, които унищожават вашата храна и имущество!"
             />
             <ProductItem
-              title="Дървеници"
+              title="Огърлици"
               href="/pests/bedbug"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/bedbug.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/bedbug.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/gerdan.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/gerdan.png"
               description="Прогонете досадните дървеници, които ви пречат да спите спокойно!"
             />
             <ProductItem
-              title="Бълхи"
+              title="Гривни"
               href="/pests/flea"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/flea2.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/flea.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/grivna.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/grivna.png"
 
               description="Без бълхи и сърбежи за Вас и Вашите домашни любимци!"
             />
             <ProductItem
-              title="Мухи"
+              title="Висулки"
               href="/pests/fly"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/fly.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/fly.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/visulka.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/visulka.png"
 
               description="Сложете край на досадните мухи, които пренасят зарази!"
             />
             <ProductItem
-              title="Оси"
+              title="Медальони"
               href="/pests/wasp"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/wasp.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/wasp.png"
+              src="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/medalion.png"
+              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/rodsilver-assets/nav/medalion.png"
 
               description="Защитете се от оси, които могат да бъдат опасни!"
             />
-            <ProductItem
-              title="Комари"
-              href="/pests/mosquito"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/mosquito.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/mosquito.png"
-
-              description="Насладете се на летните вечери без досадните комари!"
-            />
-            <ProductItem
-              title="Кърлежи"
-              href="/pests/tick"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/tick.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/tick.png"
-
-              description="Предпазете се от опасните кърлежи, преносители на сериозни заболявания!"
-            />
-            <ProductItem
-              title="Мравки"
-              href="/pests/ant"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/ant.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/ant.png"
-
-              description="Сложете край на пътеките от мравки, които нахлуват в дома ви!"
-            />
-            <ProductItem
-              title="Змии"
-              href="/pests/snake"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/snake.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/snake.png"
-
-              description="Освободете дома си от змиите, които могат да бъдат опасни!"
-            />
-            <ProductItem
-              title="Паяци"
-              href="/pests/spider"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/spider.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/spider.png"
-
-              description="Кажете сбогом на паяжините, които ви карат да се чувствате некомфортно!"
-            />
-            <ProductItem
-              title="Птици"
-              href="/pests/bird"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/bird.png"
-              darkSrc="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/dark/bird.png"
-
-              description="Прогонете птиците, които замърсяват вашия двор!"
-            />
-            {/* <ProductItem
-              title="Мухи"
-              href="https://userogue.com"
-              src="https://cdn.jsdelivr.net/gh/Ethereumistic/bio-ddd-assets/entity-assets/cockroach.png"
-              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-            /> */}
           </div>
         </MenuItem>
         </Link>

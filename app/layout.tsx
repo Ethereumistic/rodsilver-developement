@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   description: "Кажете чао на вредителите във Вашият дом или работно място!",
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,9 +51,9 @@ export default function RootLayout({
   > 
 
       <Providers>
-      <div className="font-pacifico">
-      <NavbarDemo />
-      </div>
+          <div className="font-pacifico">
+            <NavbarDemo />
+          </div>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${paci.variable}  antialiased`}
       >
