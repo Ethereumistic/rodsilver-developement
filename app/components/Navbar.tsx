@@ -11,7 +11,7 @@ import { IconShoppingCart } from "@tabler/icons-react";
 import { useStateContext } from "@/context/StateContext";
 import CartWrapper from "./CartWrapper";
 
-export function NavbarDemo({ className }: { className?: string }) {
+export function NavbarDemo() {
   const pathname = usePathname();
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
