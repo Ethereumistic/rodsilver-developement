@@ -8,6 +8,9 @@ import { FlipWordsNav } from "./FlipWordsNav";
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { IconShoppingCart } from "@tabler/icons-react";
+import { useStateContext } from "@/context/StateContext";
+import Cart from "./Cart";
+import CartWrapper from "./CartWrapper";
 
 export function NavbarDemo({ className }: { className?: string }) {
   const pathname = usePathname();
@@ -28,6 +31,7 @@ export function NavbarDemo({ className }: { className?: string }) {
   if (pathname.startsWith('/studio')) return null;
 
   return (
+    <>
     <AnimatePresence mode="wait">
       <motion.div
         initial={{ opacity: 1, y: -100 }}
@@ -38,12 +42,14 @@ export function NavbarDemo({ className }: { className?: string }) {
         <Navbar className="top-10" />
       </motion.div>
     </AnimatePresence>
+    <CartWrapper />
+    </>
   );
 }
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-
+  const { showCart, setShowCart, totalQuantities } = useStateContext();
   return (
     <div className={cn("w-full px-4 sm:px-6 lg:px-8", className)}>
       <div className="max-w-7xl mx-auto">
@@ -106,12 +112,14 @@ function Navbar({ className }: { className?: string }) {
             />
               </div>
             </MenuItem>
-            <Link href="/pests/cockroach">
+
+            <button onClick={() => setShowCart(true)}>
             <h1 className="text-5xl font-pacifico text-white h">
               <IconShoppingCart className="w-8 h-8" />
             </h1>
-            </Link>
-            <ThemeSwitch />
+            </button>
+            
+            {/* <ThemeSwitch /> */}
           </div>
         </Menu>
       </div>

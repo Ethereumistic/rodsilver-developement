@@ -5,9 +5,11 @@ import React, { useState } from 'react'
 import { urlFor } from '@/sanity/lib/client'
 import { ProductType } from '@/types/product'
 import { IconMinus, IconPlus, IconStarFilled, IconStar } from '@tabler/icons-react'
+import { useStateContext } from '@/context/StateContext'
 
 const ProductDetails = ({ product }: { product: ProductType }) => {
     const [index, setIndex] = useState(0);
+    const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
   return (
     <div>
@@ -60,20 +62,29 @@ const ProductDetails = ({ product }: { product: ProductType }) => {
             <div>
             <h3>Количество:</h3>
             <p className='border border-1 border-gray-500 rounded-md p-2 flex items-center w-min'>
-                <span className='cursor-pointer text-lg py-1 px-2'>
+                <span className='cursor-pointer text-lg py-1 px-2'
+                onClick={decQty}
+                >
                     <IconMinus className='text-gray-800 rounded-md p transition-all duration-300 hover:bg-gray-400 hover:text-white hover:scale-150' />
                 </span>
                 <span className='cursor-pointer text-lg py-1 px-2'>
-                    0
+                    {qty}
                 </span>
-                <span className='cursor-pointer text-lg py-1 px-2'>
+                <span className='cursor-pointer text-lg py-1 px-2'
+                onClick={incQty}
+                >
                     <IconPlus className='text-gray-800 rounded-md p transition-all duration-300 hover:bg-gray-300 hover:text-white hover:scale-150' />
                 </span>
             </p>
             </div>
 
             <div className='flex flex-col gap-2'>
-                <button className='bg-gray-800 text-white rounded-md py-2 px-6 mt-2 transition-all duration-300 hover:scale-105'>Добави в количката</button>
+                <button className='bg-gray-800 text-white rounded-md py-2 px-6 mt-2 transition-all duration-300 hover:scale-105'
+                onClick={() => {
+                  onAdd({ ...product, quantity: qty }, qty);
+                  setShowCart(true);
+                }}
+                >Добави в количката</button>
                 <button className='bg-gray-800 text-white rounded-md py-2 px-6 mt-2 transition-all duration-300 hover:scale-105'>Купи Сега</button>
             </div>
         </div>

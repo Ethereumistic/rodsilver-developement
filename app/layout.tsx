@@ -5,6 +5,8 @@ import { Providers } from "./providers";
 import { NavbarDemo } from "./components/Navbar";
 import { cx } from "@/utils/all";
 import { Pacifico } from "next/font/google";
+import { StateContext } from "@/context/StateContext";
+import { Toaster } from "react-hot-toast";
 
 const pacifico = Pacifico({
   subsets: ['latin'],
@@ -50,14 +52,17 @@ export default function RootLayout({
       className={cx(geistSans.variable, geistMono.variable, pacifico.variable, paci.variable)}
     > 
       <body className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} ${paci.variable} antialiased`}>
+        <StateContext>
         <Providers>
           <div className="font-pacifico">
             <NavbarDemo />
           </div>
           <main>
+            <Toaster />
             {children}
           </main>
         </Providers>
+        </StateContext>
       </body>
     </html>
   );
