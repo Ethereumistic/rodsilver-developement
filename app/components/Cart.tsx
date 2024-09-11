@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { IconMinus, IconPlus, IconShoppingCart, IconArrowLeft, IconTrash } from '@tabler/icons-react'
 import toast from 'react-hot-toast';
-
+import Image from 'next/image';
 import { useStateContext } from '@/context/StateContext';
 import { urlFor } from '@/sanity/lib/client';
 import getStripe from '@/lib/getStripe';
@@ -83,7 +83,7 @@ const Cart: React.FC = () => {
 <div className="bg-ddblue grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 {cartItems.length >= 1 && cartItems.map((item: CartItem) => (
             <div className="product" key={item._id}>
-              <img src={urlFor(item?.image[0]).url()} alt={item.name} className="w-[150px] h-[150px] object-cover rounded-xl" />
+              <Image src={urlFor(item?.image[0]).url()} alt={item.name} width={150} height={150} className="w-[150px] h-[150px] object-cover rounded-xl" />
               <div className="item-desc">
                 <div className="flex top">
                   <h5>{item.name}</h5>

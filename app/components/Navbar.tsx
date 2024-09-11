@@ -9,7 +9,6 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { IconShoppingCart } from "@tabler/icons-react";
 import { useStateContext } from "@/context/StateContext";
-import Cart from "./Cart";
 import CartWrapper from "./CartWrapper";
 
 export function NavbarDemo({ className }: { className?: string }) {
@@ -49,7 +48,7 @@ export function NavbarDemo({ className }: { className?: string }) {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-  const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const { setShowCart } = useStateContext();
   return (
     <div className={cn("w-full px-4 sm:px-6 lg:px-8", className)}>
       <div className="max-w-7xl mx-auto">
@@ -119,7 +118,7 @@ function Navbar({ className }: { className?: string }) {
             </h1>
             </button>
             
-            {/* <ThemeSwitch /> */}
+            <ThemeSwitch />
           </div>
         </Menu>
       </div>
