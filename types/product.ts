@@ -6,4 +6,12 @@ export interface ProductType {
     price: number;
     details: string;
     quantity?: number;
+    collection?: {
+      name: string;
+      slug: { current: string };
+      parentCollection?: {
+        name: string;
+        slug: { current: string };
+      };
+    };
   }

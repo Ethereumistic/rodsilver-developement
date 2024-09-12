@@ -36,5 +36,11 @@ export default {
             title: 'Details',
             type: 'string',
         },
+        {
+            name: 'collection',
+            title: 'Collection',
+            type: 'reference',
+            to: [{ type: 'collection' }],
+          },
     ]
 }
