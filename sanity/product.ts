@@ -32,8 +32,8 @@ export default {
             type: 'number',
         },
         {
-            name: 'details',
-            title: 'Details',
+            name: 'description',
+            title: 'Description',
             type: 'string',
         },
         {

@@ -63,7 +63,7 @@ const ProductDetails = ({ product, relatedProducts }: { product: ProductType, re
                 <p className='mt-0'>(20)</p>
             </div>
             <h4 className='text-3xl font-geist-sans'>Детайли:</h4>
-            <p className='text-2xl font-geist-sans'>${product.details}</p>
+            <p className='text-2xl font-geist-sans'>${product.description}</p>
             <p className='text-2xl font-geist-sans'>${product.price}</p>
 
             <div>
