@@ -7,7 +7,6 @@ import { ProductType } from '@/types/product'
 import { IconMinus, IconPlus, IconStarFilled, IconStar } from '@tabler/icons-react'
 import { useStateContext } from '@/context/StateContext'
 import { Lens } from "@/app/components/ui/lens";
-import Product from '@/app/product/[slug]/Product'
 import ProductList from './ProductList'
 
 

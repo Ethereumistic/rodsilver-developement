@@ -1,6 +1,5 @@
 import React from 'react'
 import { client } from '@/sanity/lib/client'
-import Product from '@/app/product/[slug]/Product'
 import { ProductType } from '@/types/product'
 import { ImagesSliderDemo } from '@/app/components/ImagesSliderDemo'
 import ProductList from './product/[slug]/ProductList'
