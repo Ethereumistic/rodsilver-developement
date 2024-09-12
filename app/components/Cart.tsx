@@ -24,6 +24,8 @@ const Cart: React.FC = () => {
         throw new Error('Failed to load Stripe');
       }
   
+      console.log('Sending cart items to API:', JSON.stringify(cartItems, null, 2));
+  
       const response = await fetch('/api/stripe', {
         method: 'POST',
         headers: {
@@ -34,16 +36,19 @@ const Cart: React.FC = () => {
   
       if (!response.ok) {
         const errorData = await response.json();
+        console.error('API error response:', errorData);
         throw new Error(errorData.message || 'Server error');
       }
   
       const data = await response.json();
+      console.log('API response:', data);
   
       toast.loading('Redirecting...');
   
       const result = await stripe.redirectToCheckout({ sessionId: data.id });
   
       if (result.error) {
+        console.error('Stripe redirect error:', result.error);
         throw new Error(result.error.message || 'Checkout error');
       }
     } catch (error) {

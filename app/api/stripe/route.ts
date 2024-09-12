@@ -53,13 +53,19 @@ export async function POST(request: Request) {
       cancel_url: `${request.headers.get('origin')}/canceled`,
     }
 
+    console.log('Stripe session params:', JSON.stringify(params, null, 2));
+
     const session = await stripe.checkout.sessions.create(params);
+    console.log('Stripe session created:', session.id);
 
     return NextResponse.json(session, { status: 200 });
   } catch (err) {
+    console.error('Detailed error:', err);
     if (err instanceof Stripe.errors.StripeError) {
+      console.error('Stripe error:', err.message);
       return NextResponse.json({ message: err.message }, { status: err.statusCode || 500 });
     } else {
+      console.error('Unknown error:', err);
       return NextResponse.json({ message: 'An unknown error occurred' }, { status: 500 });
     }
   }

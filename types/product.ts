@@ -4,7 +4,7 @@ export interface ProductType {
   slug: { current: string };
   description?: string;
   price: number;
-  images: { asset: { _ref: string } }[];
+  image: Array<{ asset: { _ref: string } }>;
   collection: {
     _id: string;
     name: string;
