@@ -5,11 +5,11 @@ export interface CollectionType {
   image: { asset: { _ref: string } };
   description?: string;
   isParent: boolean;
-  parentCollection?: {
+  parentCollections?: {
     _id: string;
     name: string;
     slug: { current: string };
-  };
+  }[];
   subCategory?: string;
   subcollections?: CollectionType[];
 }

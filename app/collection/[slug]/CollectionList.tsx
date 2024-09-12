@@ -15,7 +15,7 @@ export default function CollectionList({ collections }: { collections: Collectio
             <div className="cursor-pointer transition duration-300 ease-in-out 
             transform hover:scale-105 border border-gray-200 rounded-xl p-4">
               {collection.image && imageUrl && (
-                <img 
+                <Image 
                   src={imageUrl}
                   alt={collection.name}
                   width={250}
