@@ -2,18 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/client';
+import { ProductType } from '@/types/product';
 
-interface ProductType {
-    image: { asset: { _ref: string } }[];
-    name: string;
-    slug: { current: string };
-    price: number;
-    details: string;
-  }
+
 
   
 
-  const Product = ({ product: { image, name, slug, price, details } }: { product: ProductType }) => {
+const Product = ({ product: { image, name, slug, price, description } }: { product: ProductType }) => {
 
       // Check if image array exists and has at least one item
   const imageUrl = image && image.length > 0 
@@ -36,7 +31,7 @@ interface ProductType {
         )}
           <p className="font-geist-sans text-xl">{name}</p>
           <p className="font-geist-sans text-2xl mt-1">${price}</p>
-          <p className="font-geist-sans text-2xl mt-1">{details}</p>
+          <p className="font-geist-sans text-2xl mt-1">{description}</p>
         </div>
       </Link>
     </div>
