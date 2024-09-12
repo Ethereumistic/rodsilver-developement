@@ -42,5 +42,11 @@ export default {
             type: 'reference',
             to: [{ type: 'collection' }],
           },
+          {
+            name: 'subCategory',
+            title: 'Sub-Category',
+            type: 'string',
+            description: 'Enter a custom sub-category (e.g., Men, Women, Gold, Silver, etc.)',
+          },
     ]
 }

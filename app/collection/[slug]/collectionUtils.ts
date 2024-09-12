@@ -5,7 +5,14 @@ import { ProductType } from '@/types/product'
 export async function getCollection(slug: string): Promise<CollectionType> {
   const query = `*[_type == "collection" && slug.current == '${slug}'][0]{
     ...,
-    parentCollection->{
+    "subcollections": *[_type == "collection" && references(^._id)]{
+      _id,
+      name,
+      slug,
+      subCategory
+    },
+    parentCollections[]->{
+      _id,
       name,
       slug
     }
@@ -17,9 +24,13 @@ export async function getProductsByCollection(slug: string): Promise<ProductType
   const query = `*[_type == "product" && collection->slug.current == '${slug}']{
     ...,
     collection->{
+      _id,
       name,
       slug,
+      isParent,
+      subCategory,
       parentCollection->{
+        _id,
         name,
         slug
       }
@@ -27,14 +38,37 @@ export async function getProductsByCollection(slug: string): Promise<ProductType
   }`
   return client.fetch(query)
 }
-
 export async function getCollections(): Promise<CollectionType[]> {
-  const query = `*[_type == "collection"]{
+  const query = `*[_type == "collection" && isParent == true]{
+    _id,
     name,
     slug,
-    parentCollection->{
+    image,
+    isParent
+  }`
+  return client.fetch(query)
+}
+
+export async function getAllProducts(): Promise<ProductType[]> {
+  const query = `*[_type == "product"]{
+    _id,
+    name,
+    slug,
+    description,
+    price,
+    image,
+    subCategory,
+    collection->{
+      _id,
       name,
-      slug
+      slug,
+      isParent,
+      subCategory,
+      parentCollection->{
+        _id,
+        name,
+        slug
+      }
     }
   }`
   return client.fetch(query)
